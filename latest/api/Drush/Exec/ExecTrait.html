@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Drush_Exec_ExecTrait" data-root-path="../../">
+    <body id="class" data-name="class:Drush_Exec_ExecTrait" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -66,23 +79,22 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            ExecTrait
-                
-        </h1>
+        <h1>ExecTrait    
+            </h1>
     </div>
 
+    
     <p>        trait
-    <strong>ExecTrait</strong>        (<a href="https://github.com/drush-ops/drush/blob/10.x/src/Exec/ExecTrait.php">View source</a>)
+    <strong>ExecTrait</strong>        (<a href="https://github.com/drush-ops/drush/blob/11.x/src/Exec/ExecTrait.php">View source</a>)
 </p>
 
         
     
+        
 
-    
-    
+            
+        
     
     
             <h2>Methods</h2>
@@ -92,17 +104,17 @@
                 <div class="col-md-2 type">
                     bool
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_startBrowser">startBrowser</a>($uri = null, int $sleep = 0, bool $port = false, bool $browser = true)
+                <div class="col-md-8">
+                    <a href="#method_startBrowser">startBrowser</a>($uri = null, int $sleep = 0, int|null $port = null, string|bool $browser = false)
         
-                                            <p>Starts a background browser/tab for the current site or a specified URL.</p>                </div>
+                                            <p><p>Starts a background browser/tab for the current site or a specified URL.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_programExists">programExists</a>($program)
         
                                             <p class="no-description">No description</p>
@@ -113,8 +125,8 @@
                 <div class="col-md-2 type">
                     static&nbsp;
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_getEditor">getEditor</a>()
+                <div class="col-md-8">
+                    <a href="#method_getEditor">getEditor</a>(string|null $editor)
         
                                             <p class="no-description">No description</p>
                                     </div>
@@ -128,27 +140,28 @@
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_startBrowser">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Exec/ExecTrait.php#L26">at line 26</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Exec/ExecTrait.php#L27">at line 27</a></div>
         <code>                    bool
-    <strong>startBrowser</strong>($uri = null, int $sleep = 0, bool $port = false, bool $browser = true)
+    <strong>startBrowser</strong>($uri = null, int $sleep = 0, int|null $port = null, string|bool $browser = false)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Starts a background browser/tab for the current site or a specified URL.</p>                    <p>Uses a non-blocking Process call, so Drush execution will continue.</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Starts a background browser/tab for the current site or a specified URL.</p></p>                <p><p>Uses a non-blocking Process call, so Drush execution will continue.</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$uri</td>
-                <td>URI or site path to open in browser. If omitted, or if a site path
+                <td><p>Optional URI or site path to open in browser. If omitted, or if a site path
 is specified, the current site home page uri will be prepended if the site's
-hostname resolves.</td>
+hostname resolves.</p></td>
             </tr>
                     <tr>
                 <td>int</td>
@@ -156,12 +169,12 @@ hostname resolves.</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>bool</td>
+                <td>int|null</td>
                 <td>$port</td>
                 <td></td>
             </tr>
                     <tr>
-                <td>bool</td>
+                <td>string|bool</td>
                 <td>$browser</td>
                 <td></td>
             </tr>
@@ -173,10 +186,12 @@ hostname resolves.</td>
                     <table class="table table-condensed">
         <tr>
             <td>bool</td>
-            <td></td>
+            <td><p>if browser was opened. FALSE if browser was disabled by the user or a
+default browser could not be found.</p></td>
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -185,16 +200,20 @@ hostname resolves.</td>
             </div>
                     <div class="method-item">
                     <h3 id="method_programExists">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Exec/ExecTrait.php#L90">at line 90</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Exec/ExecTrait.php#L91">at line 91</a></div>
         <code>        static            
     <strong>programExists</strong>($program)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -208,22 +227,38 @@ hostname resolves.</td>
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_getEditor">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Exec/ExecTrait.php#L102">at line 102</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Exec/ExecTrait.php#L103">at line 103</a></div>
         <code>        static            
-    <strong>getEditor</strong>()
+    <strong>getEditor</strong>(string|null $editor)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
+                            <h4>Parameters</h4>
+
+                    <table class="table table-condensed">
+                    <tr>
+                <td>string|null</td>
+                <td>$editor</td>
+                <td></td>
+            </tr>
+            </table>
+
+            
             
             
             
@@ -234,7 +269,7 @@ hostname resolves.</td>
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

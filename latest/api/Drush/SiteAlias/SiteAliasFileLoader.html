@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Drush_SiteAlias_SiteAliasFileLoader" data-root-path="../../">
+    <body id="class" data-name="class:Drush_SiteAlias_SiteAliasFileLoader" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -66,29 +79,27 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            SiteAliasFileLoader
-                
-        </h1>
+        <h1>SiteAliasFileLoader    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>SiteAliasFileLoader</strong>        extends <abbr title="Consolidation\SiteAlias\SiteAliasFileLoader">SiteAliasFileLoader</abbr>        (<a href="https://github.com/drush-ops/drush/blob/10.x/src/SiteAlias/SiteAliasFileLoader.php">View source</a>)
+    <strong>SiteAliasFileLoader</strong>        extends <abbr title="Consolidation\SiteAlias\SiteAliasFileLoader">SiteAliasFileLoader</abbr>        (<a href="https://github.com/drush-ops/drush/blob/11.x/src/SiteAlias/SiteAliasFileLoader.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Discover alias files:</p>            <p><ul>
+            <p><p>Discover alias files:</p></p>            <p><ul>
 <li>sitename.site.yml: contains multiple aliases, one for each of the
 environments of 'sitename'.</li>
-</ul>
-</p>                    </div>
-    
-    
+</ul></p>        </div>
+            
+        
     
     
             <h2>Methods</h2>
@@ -98,10 +109,10 @@ environments of 'sitename'.</li>
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method___construct">__construct</a>(SiteAliasFileDiscovery|null $discovery = null)
+                <div class="col-md-8">
+                    <a href="#method___construct">__construct</a>(<abbr title="Drush\SiteAlias\SiteAliasFileDiscovery">SiteAliasFileDiscovery</abbr>|null $discovery = null)
         
-                                            <p>SiteAliasFileLoader constructor</p>                </div>
+                                            <p><p>SiteAliasFileLoader constructor</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -112,28 +123,30 @@ environments of 'sitename'.</li>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/SiteAlias/SiteAliasFileLoader.php#L19">at line 19</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/SiteAlias/SiteAliasFileLoader.php#L20">at line 20</a></div>
         <code>                    
-    <strong>__construct</strong>(SiteAliasFileDiscovery|null $discovery = null)
+    <strong>__construct</strong>(<abbr title="Drush\SiteAlias\SiteAliasFileDiscovery">SiteAliasFileDiscovery</abbr>|null $discovery = null)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>SiteAliasFileLoader constructor</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>SiteAliasFileLoader constructor</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td>SiteAliasFileDiscovery|null</td>
+                <td><abbr title="Drush\SiteAlias\SiteAliasFileDiscovery">SiteAliasFileDiscovery</abbr>|null</td>
                 <td>$discovery</td>
                 <td></td>
             </tr>
             </table>
 
+            
             
             
             
@@ -144,7 +157,7 @@ environments of 'sitename'.</li>
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

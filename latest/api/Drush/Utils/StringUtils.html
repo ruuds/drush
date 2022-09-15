@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Drush_Utils_StringUtils" data-root-path="../../">
+    <body id="class" data-name="class:Drush_Utils_StringUtils" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -66,23 +79,22 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            StringUtils
-                
-        </h1>
+        <h1>StringUtils    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>StringUtils</strong>        (<a href="https://github.com/drush-ops/drush/blob/10.x/src/Utils/StringUtils.php">View source</a>)
+    <strong>StringUtils</strong>        (<a href="https://github.com/drush-ops/drush/blob/11.x/src/Utils/StringUtils.php">View source</a>)
 </p>
 
         
     
+        
 
-    
-    
+            
+        
     
     
             <h2>Methods</h2>
@@ -92,41 +104,41 @@
                 <div class="col-md-2 type">
                     static&nbsp;array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_csvToArray">csvToArray</a>($args)
         
-                                            <p>Convert a csv string, or an array of items which
-may contain csv strings, into an array of items.</p>                </div>
+                                            <p><p>Convert a csv string, or an array of items which
+may contain csv strings, into an array of items.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_interpolate">interpolate</a>(string $message, array $context = [])
         
-                                            <p>Replace placeholders in a string.</p>                </div>
+                                            <p><p>Replace placeholders in a string.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_replaceTilde">replaceTilde</a>($path, $home)
         
-                                            <p>Replace tilde in a path with the HOME directory.</p>                </div>
+                                            <p><p>Replace tilde in a path with the HOME directory.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     static&nbsp;string
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_generatePassword">generatePassword</a>(int $length = 10)
         
-                                            <p>Generate a random alphanumeric password.  Copied from user.module.</p>                </div>
+                                            <p><p>Generate a random alphanumeric password.  Copied from user.module.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -137,28 +149,29 @@ may contain csv strings, into an array of items.</p>                </div>
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_csvToArray">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Utils/StringUtils.php#L20">at line 20</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Utils/StringUtils.php#L16">at line 16</a></div>
         <code>        static            array
     <strong>csvToArray</strong>($args)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Convert a csv string, or an array of items which
-may contain csv strings, into an array of items.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Convert a csv string, or an array of items which
+may contain csv strings, into an array of items.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$args</td>
-                <td>simple csv string; e.g. 'a,b,c'
+                <td><p>A simple csv string; e.g. 'a,b,c'
 or a simple list of items; e.g. array('a','b','c')
-or some combination; e.g. array('a,b','c') or array('a,','b,','c,')</td>
+or some combination; e.g. array('a,b','c') or array('a,','b,','c,').</p></td>
             </tr>
             </table>
 
@@ -174,38 +187,41 @@ or some combination; e.g. array('a,b','c') or array('a,','b,','c,')</td>
 
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_interpolate">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Utils/StringUtils.php#L46">at line 46</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Utils/StringUtils.php#L42">at line 42</a></div>
         <code>        static            string
     <strong>interpolate</strong>(string $message, array $context = [])
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Replace placeholders in a string.</p>                    <p>Examples:
-interpolate('Hello, {var}', ['var' => 'world']) ==> 'Hello, world'
-interpolate('Do !what', ['!what' => 'work'])    ==> 'Do work'</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Replace placeholders in a string.</p></p>                <p><p>Examples:
+interpolate('Hello, {var}', ['var' =&gt; 'world']) ==&gt; 'Hello, world'
+interpolate('Do !what', ['!what' =&gt; 'work'])    ==&gt; 'Do work'</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td>string</td>
                 <td>$message</td>
-                <td>The string with placeholders to be interpolated.</td>
+                <td><p>The string with placeholders to be interpolated.</p></td>
             </tr>
                     <tr>
                 <td>array</td>
                 <td>$context</td>
-                <td>An associative array of values to be inserted into the message.</td>
+                <td><p>An associative array of values to be inserted into the message.
+The resulting string with all placeholders filled in.</p></td>
             </tr>
             </table>
 
@@ -219,6 +235,7 @@ interpolate('Do !what', ['!what' => 'work'])    ==> 'Do work'</p>               
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -227,30 +244,31 @@ interpolate('Do !what', ['!what' => 'work'])    ==> 'Do work'</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_replaceTilde">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Utils/StringUtils.php#L93">at line 93</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Utils/StringUtils.php#L88">at line 88</a></div>
         <code>        static            string
     <strong>replaceTilde</strong>($path, $home)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Replace tilde in a path with the HOME directory.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Replace tilde in a path with the HOME directory.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td></td>
                 <td>$path</td>
-                <td>path that may contain a ~ at front.</td>
+                <td><p>A path that may contain a ~ at front.</p></td>
             </tr>
                     <tr>
                 <td></td>
                 <td>$home</td>
-                <td>effective home dir for this request.</td>
+                <td><p>The effective home dir for this request.</p></td>
             </tr>
             </table>
 
@@ -260,10 +278,12 @@ interpolate('Do !what', ['!what' => 'work'])    ==> 'Do work'</p>               
                     <table class="table table-condensed">
         <tr>
             <td>string</td>
-            <td></td>
+            <td><p>The path with tilde replaced, if applicable.
+The path with tilde replaced, if applicable.</p></td>
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -272,18 +292,19 @@ interpolate('Do !what', ['!what' => 'work'])    ==> 'Do work'</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_generatePassword">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Utils/StringUtils.php#L110">at line 110</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Utils/StringUtils.php#L103">at line 103</a></div>
         <code>        static            string
     <strong>generatePassword</strong>(int $length = 10)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Generate a random alphanumeric password.  Copied from user.module.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Generate a random alphanumeric password.  Copied from user.module.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -306,6 +327,7 @@ interpolate('Do !what', ['!what' => 'work'])    ==> 'Do work'</p>               
 
             
             
+            
                     </div>
     </div>
 
@@ -313,7 +335,7 @@ interpolate('Do !what', ['!what' => 'work'])    ==> 'Do work'</p>               
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

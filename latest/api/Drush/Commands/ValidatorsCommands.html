@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Drush_Commands_ValidatorsCommands" data-root-path="../../">
+    <body id="class" data-name="class:Drush_Commands_ValidatorsCommands" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -66,23 +79,22 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            ValidatorsCommands
-                
-        </h1>
+        <h1>ValidatorsCommands    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>ValidatorsCommands</strong>        (<a href="https://github.com/drush-ops/drush/blob/10.x/src/Commands/ValidatorsCommands.php">View source</a>)
+    <strong>ValidatorsCommands</strong>        (<a href="https://github.com/drush-ops/drush/blob/11.x/src/Commands/ValidatorsCommands.php">View source</a>)
 </p>
 
         
     
+        
 
-    
-    
+            
+        
     
     
             <h2>Methods</h2>
@@ -92,51 +104,51 @@
                 <div class="col-md-2 type">
                     <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_validateEntityLoad">validateEntityLoad</a>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         
-                                            <p>Validate that passed entity names are valid.</p>                </div>
+                                            <p><p>Validate that passed entity names are valid.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
+                    void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_validateModuleEnabled">validateModuleEnabled</a>(<abbr title="Symfony\Component\Console\Input\Input">Input</abbr> $input, <abbr title="Consolidation\AnnotatedCommand\AnnotationData">AnnotationData</abbr> $annotationData)
         
-                                            <p>Validate that passed module names are enabled. We use pre-init phase because interact() methods run early and they
-need to know that their module is enabled (e.g. image-flush).</p>                </div>
+                                            <p><p>Validate that passed module names are enabled. We use post-init phase because interact() methods run early and they
+need to know that their module is enabled (e.g. image-flush).</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_validateFileExists">validateFileExists</a>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         
-                                            <p>Validate that the file path exists.</p>                </div>
+                                            <p><p>Validate that the file path exists.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_validatePHPExtension">validatePHPExtension</a>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         
-                                            <p>Validate that required PHP extension exists.</p>                </div>
+                                            <p><p>Validate that required PHP extension exists.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_validatePermissions">validatePermissions</a>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         
-                                            <p>Validate that the permission exists.</p>                </div>
+                                            <p><p>Validate that the permission exists.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -147,18 +159,19 @@ need to know that their module is enabled (e.g. image-flush).</p>               
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method_validateEntityLoad">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Commands/ValidatorsCommands.php#L24">at line 24</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Commands/ValidatorsCommands.php#L23">at line 23</a></div>
         <code>                    <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
     <strong>validateEntityLoad</strong>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Validate that passed entity names are valid.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Validate that passed entity names are valid.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -192,25 +205,27 @@ need to know that their module is enabled (e.g. image-flush).</p>               
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_validateModuleEnabled">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Commands/ValidatorsCommands.php#L45">at line 45</a></div>
-        <code>                    <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Commands/ValidatorsCommands.php#L42">at line 42</a></div>
+        <code>                    void
     <strong>validateModuleEnabled</strong>(<abbr title="Symfony\Component\Console\Input\Input">Input</abbr> $input, <abbr title="Consolidation\AnnotatedCommand\AnnotationData">AnnotationData</abbr> $annotationData)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Validate that passed module names are enabled. We use pre-init phase because interact() methods run early and they
-need to know that their module is enabled (e.g. image-flush).</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Validate that passed module names are enabled. We use post-init phase because interact() methods run early and they
+need to know that their module is enabled (e.g. image-flush).</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -231,7 +246,7 @@ need to know that their module is enabled (e.g. image-flush).</p>               
 
                     <table class="table table-condensed">
         <tr>
-            <td><abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null</td>
+            <td>void</td>
             <td></td>
         </tr>
     </table>
@@ -249,24 +264,26 @@ need to know that their module is enabled (e.g. image-flush).</p>               
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_validateFileExists">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Commands/ValidatorsCommands.php#L64">at line 64</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Commands/ValidatorsCommands.php#L60">at line 60</a></div>
         <code>                    <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
     <strong>validateFileExists</strong>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Validate that the file path exists.</p>                    <p>Annotation value should be the name of the argument containing the path.</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Validate that the file path exists.</p></p>                <p><p>Annotation value should be the name of the argument containing the path.</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -287,6 +304,7 @@ need to know that their module is enabled (e.g. image-flush).</p>               
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -295,18 +313,19 @@ need to know that their module is enabled (e.g. image-flush).</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_validatePHPExtension">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Commands/ValidatorsCommands.php#L95">at line 95</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Commands/ValidatorsCommands.php#L90">at line 90</a></div>
         <code>                    <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
     <strong>validatePHPExtension</strong>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Validate that required PHP extension exists.</p>                    <p>Annotation value should be extension name. If multiple, delimit by a comma.</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Validate that required PHP extension exists.</p></p>                <p><p>Annotation value should be extension name. If multiple, delimit by a comma.</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -327,6 +346,7 @@ need to know that their module is enabled (e.g. image-flush).</p>               
         </tr>
     </table>
 
+            
             
             
                     </div>
@@ -335,18 +355,19 @@ need to know that their module is enabled (e.g. image-flush).</p>               
             </div>
                     <div class="method-item">
                     <h3 id="method_validatePermissions">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Commands/ValidatorsCommands.php#L120">at line 120</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Commands/ValidatorsCommands.php#L114">at line 114</a></div>
         <code>                    <abbr title="Consolidation\AnnotatedCommand\CommandError">CommandError</abbr>|null
     <strong>validatePermissions</strong>(<abbr title="Consolidation\AnnotatedCommand\CommandData">CommandData</abbr> $commandData)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Validate that the permission exists.</p>                    <p>Annotation value should be the name of the argument/option containing the permission(s).</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Validate that the permission exists.</p></p>                <p><p>Annotation value should be the name of the argument/option containing the permission(s).</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -369,6 +390,7 @@ need to know that their module is enabled (e.g. image-flush).</p>               
 
             
             
+            
                     </div>
     </div>
 
@@ -376,7 +398,7 @@ need to know that their module is enabled (e.g. image-flush).</p>               
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

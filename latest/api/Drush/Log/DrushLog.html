@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Drush_Log_DrushLog" data-root-path="../../">
+    <body id="class" data-name="class:Drush_Log_DrushLog" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -66,29 +79,27 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            DrushLog
-                
-        </h1>
+        <h1>DrushLog    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>DrushLog</strong>        implements
-        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>, <abbr title="Psr\Log\LoggerAwareInterface">LoggerAwareInterface</abbr>        (<a href="https://github.com/drush-ops/drush/blob/10.x/src/Log/DrushLog.php">View source</a>)
+    <strong>DrushLog</strong>        implements        <abbr title="Psr\Log\LoggerInterface">LoggerInterface</abbr>, <abbr title="Psr\Log\LoggerAwareInterface">LoggerAwareInterface</abbr>        (<a href="https://github.com/drush-ops/drush/blob/11.x/src/Log/DrushLog.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>Redirects Drupal logging messages to Drush log.</p>            <p>Note that Drupal extends the LoggerInterface, and
+            <p><p>Redirects Drupal logging messages to Drush log.</p></p>            <p><p>Note that Drupal extends the LoggerInterface, and
 needlessly replaces Psr\Log\LogLevels with Drupal\Core\Logger\RfcLogLevel.
 Doing this arguably violates the Psr\Log contract,
-but we can't help that here -- we just need to convert back.</p>                    </div>
-    
-            <h2>Traits</h2>
+but we can't help that here -- we just need to convert back.</p></p>        </div>
+            
+                <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
@@ -111,9 +122,10 @@ but we can't help that here -- we just need to convert back.</p>                
                     <tr>
                 <td class="type" id="property_parser">
                                         protected                                        <abbr title="Drupal\Core\Logger\LogMessageParserInterface">LogMessageParserInterface</abbr>
-                </td>
+                                                                                
+                                    </td>
                 <td>$parser</td>
-                <td class="last">The message's placeholders parser.</td>
+                <td class="last"><p>The message's placeholders parser.</p></td>
                 <td></td>
             </tr>
             </table>
@@ -126,17 +138,17 @@ but we can't help that here -- we just need to convert back.</p>                
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<abbr title="Drupal\Core\Logger\LogMessageParserInterface">LogMessageParserInterface</abbr> $parser)
         
-                                            <p>Constructs a DrushLog object.</p>                </div>
+                                            <p><p>Constructs a DrushLog object.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_log">log</a>($level, $message, array $context = [])
         
                                             <p>{@inheritdoc}</p>                </div>
@@ -150,28 +162,30 @@ but we can't help that here -- we just need to convert back.</p>                
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Log/DrushLog.php#L53">at line 53</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Log/DrushLog.php#L55">at line 55</a></div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Drupal\Core\Logger\LogMessageParserInterface">LogMessageParserInterface</abbr> $parser)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Constructs a DrushLog object.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Constructs a DrushLog object.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
                 <td><abbr title="Drupal\Core\Logger\LogMessageParserInterface">LogMessageParserInterface</abbr></td>
                 <td>$parser</td>
-                <td>The parser to use when extracting message variables.</td>
+                <td><p>The parser to use when extracting message variables.</p></td>
             </tr>
             </table>
 
+            
             
             
             
@@ -181,18 +195,19 @@ but we can't help that here -- we just need to convert back.</p>                
             </div>
                     <div class="method-item">
                     <h3 id="method_log">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Log/DrushLog.php#L61">at line 61</a></div>
-        <code>                    
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Log/DrushLog.php#L63">at line 63</a></div>
+        <code>                    void
     <strong>log</strong>($level, $message, array $context = [])
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>{@inheritdoc}</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p>{@inheritdoc}</p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -214,6 +229,16 @@ but we can't help that here -- we just need to convert back.</p>                
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>
@@ -223,7 +248,7 @@ but we can't help that here -- we just need to convert back.</p>                
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

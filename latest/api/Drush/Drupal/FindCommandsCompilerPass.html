@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Drush_Drupal_FindCommandsCompilerPass" data-root-path="../../">
+    <body id="class" data-name="class:Drush_Drupal_FindCommandsCompilerPass" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -66,45 +79,40 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            FindCommandsCompilerPass
-                
-        </h1>
+        <h1>FindCommandsCompilerPass    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>FindCommandsCompilerPass</strong>        implements
-        <abbr title="Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface">CompilerPassInterface</abbr>        (<a href="https://github.com/drush-ops/drush/blob/10.x/src/Drupal/FindCommandsCompilerPass.php">View source</a>)
+    <strong>FindCommandsCompilerPass</strong>        implements        <abbr title="Symfony\Component\DependencyInjection\Compiler\CompilerPassInterface">CompilerPassInterface</abbr>        (<a href="https://github.com/drush-ops/drush/blob/11.x/src/Drupal/FindCommandsCompilerPass.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>This compiler pass is added to Drupal's ContainerBuilder by our own
+            <p><p>This compiler pass is added to Drupal's ContainerBuilder by our own
 subclass of DrupalKernel.  Our DrupalKernel subclass knows which
 compiler passes to add because they are registered to it via its
 'alter()' method. This happens in DrupalBoot8 immediately after the
-DrupalKernel object is created.</p>            <p>Having been thus added, this compiler pass will then be called during
-$kernel->boot(), when Drupal's dependency injection container is being
+DrupalKernel object is created.</p></p>            <p><p>Having been thus added, this compiler pass will then be called during
+$kernel-&gt;boot(), when Drupal's dependency injection container is being
 compiled.  Since we cannot use the container at this point (since its
 initialization is not yet complete), we instead alter the definition of
 a storage class in the container to add more setter injection method
 calls to 'addCommandReference'.</p>
-
 <p>Later, after the container has been completely initialized, we can
 fetch the storage class from the DI container (perhaps also via
 injection from a reference in the container).  At that point, we can
 request the list of Console commands that were added via the
 (delayed) call(s) to addCommandReference.</p>
-
 <p>Documentation:</p>
-
-<p>http://symfony.com/doc/2.7/components/dependency_injection/tags.html#create-a-compilerpass</p>                    </div>
-    
-    
+<p><a href="http://symfony.com/doc/2.7/components/dependency_injection/tags.html#create-a-compilerpass">http://symfony.com/doc/2.7/components/dependency_injection/tags.html#create-a-compilerpass</a></p></p>        </div>
+            
+        
     
             <h2>Properties</h2>
 
@@ -112,7 +120,8 @@ request the list of Console commands that were added via the
                     <tr>
                 <td class="type" id="property_storageClassId">
                                         protected                                        
-                </td>
+                                                                                
+                                    </td>
                 <td>$storageClassId</td>
                 <td class="last"></td>
                 <td></td>
@@ -120,7 +129,8 @@ request the list of Console commands that were added via the
                     <tr>
                 <td class="type" id="property_tagId">
                                         protected                                        
-                </td>
+                                                                                
+                                    </td>
                 <td>$tagId</td>
                 <td class="last"></td>
                 <td></td>
@@ -135,7 +145,7 @@ request the list of Console commands that were added via the
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>($storageClassId, $tagId)
         
                                             <p class="no-description">No description</p>
@@ -144,9 +154,9 @@ request the list of Console commands that were added via the
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_process">process</a>(<abbr title="Symfony\Component\DependencyInjection\ContainerBuilder">ContainerBuilder</abbr> $container)
         
                                             <p class="no-description">No description</p>
@@ -161,16 +171,20 @@ request the list of Console commands that were added via the
             <div id="method-details">
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Drupal/FindCommandsCompilerPass.php#L39">at line 39</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Drupal/FindCommandsCompilerPass.php#L40">at line 40</a></div>
         <code>                    
     <strong>__construct</strong>($storageClassId, $tagId)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -189,22 +203,27 @@ request the list of Console commands that were added via the
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_process">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Drupal/FindCommandsCompilerPass.php#L45">at line 45</a></div>
-        <code>                    
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Drupal/FindCommandsCompilerPass.php#L46">at line 46</a></div>
+        <code>                    void
     <strong>process</strong>(<abbr title="Symfony\Component\DependencyInjection\ContainerBuilder">ContainerBuilder</abbr> $container)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -216,6 +235,16 @@ request the list of Console commands that were added via the
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>
@@ -225,7 +254,7 @@ request the list of Console commands that were added via the
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

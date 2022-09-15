@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="../../css/doctum.css">
         <link rel="stylesheet" type="text/css" href="../../fonts/doctum-font.css">
         <script src="../../js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="../../doctum.js"></script>
         <script async defer src="../../js/bootstrap.min.js"></script>
-        <script src="../../js/typeahead.min.js"></script>
-        <script src="../../doctum.js"></script>
+        <script async defer src="../../js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="class" data-name="class:Drush_Runtime_RedispatchHook" data-root-path="../../">
+    <body id="class" data-name="class:Drush_Runtime_RedispatchHook" data-root-path="../../" data-search-index-url="../../doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="../../search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="../../search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -66,29 +79,27 @@
             </ol>
         </div>
                 <div id="page-content">
-                
     <div class="page-header">
-        <h1>
-            RedispatchHook
-                
-        </h1>
+        <h1>RedispatchHook    
+            </h1>
     </div>
 
+    
     <p>        class
-    <strong>RedispatchHook</strong>        implements
-        <abbr title="Consolidation\AnnotatedCommand\Hooks\InitializeHookInterface">InitializeHookInterface</abbr>, <abbr title="Robo\Contract\ConfigAwareInterface">ConfigAwareInterface</abbr>, <abbr title="Consolidation\SiteAlias\SiteAliasManagerAwareInterface">SiteAliasManagerAwareInterface</abbr>        (<a href="https://github.com/drush-ops/drush/blob/10.x/src/Runtime/RedispatchHook.php">View source</a>)
+    <strong>RedispatchHook</strong>        implements        <abbr title="Consolidation\AnnotatedCommand\Hooks\InitializeHookInterface">InitializeHookInterface</abbr>, <abbr title="Robo\Contract\ConfigAwareInterface">ConfigAwareInterface</abbr>, <abbr title="Consolidation\SiteAlias\SiteAliasManagerAwareInterface">SiteAliasManagerAwareInterface</abbr>        (<a href="https://github.com/drush-ops/drush/blob/11.x/src/Runtime/RedispatchHook.php">View source</a>)
 </p>
 
         
     
+        
 
             <div class="description">
-            <p>The RedispatchHook is installed as an init hook that runs before
+            <p><p>The RedispatchHook is installed as an init hook that runs before
 all commands. If the commandline contains an alias or a site specification
 that points at a remote machine, then we will stop execution of the
-current command and instead run the command remotely.</p>                                </div>
-    
-            <h2>Traits</h2>
+current command and instead run the command remotely.</p></p>                    </div>
+            
+                <h2>Traits</h2>
 
         
     <div class="container-fluid underlined">
@@ -115,8 +126,9 @@ current command and instead run the command remotely.</p>                       
             <table class="table table-condensed">
                     <tr>
                 <td class="type" id="property_processManager">
-                                        protected                                        ProcessManager
-                </td>
+                                        protected                                        <abbr title="Consolidation\SiteProcess\ProcessManager">ProcessManager</abbr>
+                                                                                
+                                    </td>
                 <td>$processManager</td>
                 <td class="last"></td>
                 <td></td>
@@ -131,11 +143,11 @@ current command and instead run the command remotely.</p>                       
                 <div class="col-md-2 type">
                     <a href="../../Drush/Config/DrushConfig.html"><abbr title="Drush\Config\DrushConfig">DrushConfig</abbr></a>
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_getConfig">getConfig</a>()
         
-                                            <p>Replaces same method in ConfigAwareTrait in order to provide a
-DrushConfig as return type. Helps with IDE completion.</p>                </div>
+                                            <p><p>Replaces same method in ConfigAwareTrait in order to provide a
+DrushConfig as return type. Helps with IDE completion.</p></p>                </div>
                 <div class="col-md-2"><small>from&nbsp;<a href="../../Drush/Config/ConfigAwareTrait.html#method_getConfig">
 <abbr title="Drush\Config\ConfigAwareTrait">ConfigAwareTrait</abbr></a></small></div>
             </div>
@@ -143,7 +155,7 @@ DrushConfig as return type. Helps with IDE completion.</p>                </div>
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method___construct">__construct</a>(<abbr title="Consolidation\SiteProcess\ProcessManager">ProcessManager</abbr> $processManager)
         
                                             <p class="no-description">No description</p>
@@ -154,52 +166,52 @@ DrushConfig as return type. Helps with IDE completion.</p>                </div>
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_initialize">initialize</a>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Consolidation\AnnotatedCommand\AnnotationData">AnnotationData</abbr> $annotationData)
         
-                                            <p>Check to see if it is necessary to redispatch to a remote site.</p>                </div>
+                                            <p><p>Check to see if it is necessary to redispatch to a remote site.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_redispatchIfRemote">redispatchIfRemote</a>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input)
         
-                                            <p>Check to see if the target of the command is remote. Call redispatch
-if it is.</p>                </div>
+                                            <p><p>Check to see if the target of the command is remote. Call redispatch
+if it is.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
                     
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_redispatch">redispatch</a>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input)
         
-                                            <p>Called from RemoteCommandProxy::execute() to run remote commands.</p>                </div>
+                                            <p><p>Called from RemoteCommandProxy::execute() to run remote commands.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    array
                 </div>
-                <div class="col-md-8 type">
+                <div class="col-md-8">
                     <a href="#method_alterArgsForRedispatch">alterArgsForRedispatch</a>(array $redispatchArgs)
         
-                                            <p>Remove anything that is not necessary for the remote side.</p>                </div>
+                                            <p><p>Remove anything that is not necessary for the remote side.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
                     <div class="row">
                 <div class="col-md-2 type">
-                    
+                    void
                 </div>
-                <div class="col-md-8 type">
-                    <a href="#method_exitEarly">exitEarly</a>($exit_code)
+                <div class="col-md-8">
+                    <a href="#method_exitEarly">exitEarly</a>(int $exit_code)
         
-                                            <p>Abort the current execution without causing distress to our
-shutdown handler.</p>                </div>
+                                            <p><p>Abort the current execution without causing distress to our
+shutdown handler.</p></p>                </div>
                 <div class="col-md-2"></div>
             </div>
             </div>
@@ -211,19 +223,20 @@ shutdown handler.</p>                </div>
                     <div class="method-item">
                     <h3 id="method_getConfig">
         <div class="location">in <a href="../../Drush/Config/ConfigAwareTrait.html#method_getConfig">
-<abbr title="Drush\Config\ConfigAwareTrait">ConfigAwareTrait</abbr></a> <a href="https://github.com/drush-ops/drush/blob/10.x/src/Config/ConfigAwareTrait.php#L18">at line 18</a></div>
+<abbr title="Drush\Config\ConfigAwareTrait">ConfigAwareTrait</abbr></a> <a href="https://github.com/drush-ops/drush/blob/11.x/src/Config/ConfigAwareTrait.php#L19">at line 19</a></div>
         <code>                    <a href="../../Drush/Config/DrushConfig.html"><abbr title="Drush\Config\DrushConfig">DrushConfig</abbr></a>
     <strong>getConfig</strong>()
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Replaces same method in ConfigAwareTrait in order to provide a
-DrushConfig as return type. Helps with IDE completion.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Replaces same method in ConfigAwareTrait in order to provide a
+DrushConfig as return type. Helps with IDE completion.</p></p>                        
+        </div>
+        <div class="tags">
             
                             <h4>Return Value</h4>
 
@@ -247,22 +260,27 @@ DrushConfig as return type. Helps with IDE completion.</p>                      
             </tr>
             </table>
 
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method___construct">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Runtime/RedispatchHook.php#L33">at line 33</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Runtime/RedispatchHook.php#L33">at line 33</a></div>
         <code>                    
     <strong>__construct</strong>(<abbr title="Consolidation\SiteProcess\ProcessManager">ProcessManager</abbr> $processManager)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                <div class="tags">
+        <div class="method-description">
+                            <p class="no-description">No description</p>
+                    
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -276,26 +294,28 @@ DrushConfig as return type. Helps with IDE completion.</p>                      
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_initialize">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Runtime/RedispatchHook.php#L47">at line 47</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Runtime/RedispatchHook.php#L47">at line 47</a></div>
         <code>                    
     <strong>initialize</strong>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input, <abbr title="Consolidation\AnnotatedCommand\AnnotationData">AnnotationData</abbr> $annotationData)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Check to see if it is necessary to redispatch to a remote site.</p>                    <p>We do not redispatch to local sites here; usually, local sites may
+        <div class="method-description">
+                            <p><p>Check to see if it is necessary to redispatch to a remote site.</p></p>                <p><p>We do not redispatch to local sites here; usually, local sites may
 simply be selected and require no redispatch. When a local redispatch
-is needed, it happens in the RedispatchToSiteLocal class.</p>                            </div>
-                <div class="tags">
+is needed, it happens in the RedispatchToSiteLocal class.</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -314,25 +334,27 @@ is needed, it happens in the RedispatchToSiteLocal class.</p>                   
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_redispatchIfRemote">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Runtime/RedispatchHook.php#L69">at line 69</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Runtime/RedispatchHook.php#L69">at line 69</a></div>
         <code>                    
     <strong>redispatchIfRemote</strong>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Check to see if the target of the command is remote. Call redispatch
-if it is.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Check to see if the target of the command is remote. Call redispatch
+if it is.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -343,6 +365,7 @@ if it is.</p>                                                </div>
             </tr>
             </table>
 
+            
             
             
             
@@ -352,18 +375,19 @@ if it is.</p>                                                </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_redispatch">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Runtime/RedispatchHook.php#L83">at line 83</a></div>
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Runtime/RedispatchHook.php#L83">at line 83</a></div>
         <code>                    
     <strong>redispatch</strong>(<abbr title="Symfony\Component\Console\Input\InputInterface">InputInterface</abbr> $input)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Called from RemoteCommandProxy::execute() to run remote commands.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Called from RemoteCommandProxy::execute() to run remote commands.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -377,25 +401,27 @@ if it is.</p>                                                </div>
             
             
             
+            
                     </div>
     </div>
 
             </div>
                     <div class="method-item">
                     <h3 id="method_alterArgsForRedispatch">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Runtime/RedispatchHook.php#L118">at line 118</a></div>
-        <code>            protected        
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Runtime/RedispatchHook.php#L116">at line 116</a></div>
+        <code>            protected        array
     <strong>alterArgsForRedispatch</strong>(array $redispatchArgs)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Remove anything that is not necessary for the remote side.</p>                    <p>At the moment this is limited to configuration options
-provided via -D.</p>                            </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Remove anything that is not necessary for the remote side.</p></p>                <p><p>At the moment this is limited to configuration options
+provided via -D.</p></p>        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
@@ -407,6 +433,16 @@ provided via -D.</p>                            </div>
             </table>
 
             
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>array</td>
+            <td></td>
+        </tr>
+    </table>
+
+            
             
             
                     </div>
@@ -415,28 +451,39 @@ provided via -D.</p>                            </div>
             </div>
                     <div class="method-item">
                     <h3 id="method_exitEarly">
-        <div class="location"><a href="https://github.com/drush-ops/drush/blob/10.x/src/Runtime/RedispatchHook.php#L131">at line 131</a></div>
-        <code>            protected        
-    <strong>exitEarly</strong>($exit_code)
+        <div class="location"><a href="https://github.com/drush-ops/drush/blob/11.x/src/Runtime/RedispatchHook.php#L129">at line 129</a></div>
+        <code>            protected        void
+    <strong>exitEarly</strong>(int $exit_code)
         </code>
     </h3>
-    <div class="details">
-            
+    <div class="details">    
     
+            
 
-                    <div class="method-description">
-                                    <p>Abort the current execution without causing distress to our
-shutdown handler.</p>                                                </div>
-                <div class="tags">
+        <div class="method-description">
+                            <p><p>Abort the current execution without causing distress to our
+shutdown handler.</p></p>                        
+        </div>
+        <div class="tags">
                             <h4>Parameters</h4>
 
                     <table class="table table-condensed">
                     <tr>
-                <td></td>
+                <td>int</td>
                 <td>$exit_code</td>
                 <td></td>
             </tr>
             </table>
+
+            
+                            <h4>Return Value</h4>
+
+                    <table class="table table-condensed">
+        <tr>
+            <td>void</td>
+            <td></td>
+        </tr>
+    </table>
 
             
             
@@ -448,7 +495,7 @@ shutdown handler.</p>                                                </div>
             </div>
 
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>

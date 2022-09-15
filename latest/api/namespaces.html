@@ -10,24 +10,37 @@
         <link rel="stylesheet" type="text/css" href="css/doctum.css">
         <link rel="stylesheet" type="text/css" href="fonts/doctum-font.css">
         <script src="js/jquery-3.5.1.slim.min.js"></script>
+        <script async defer src="doctum.js"></script>
         <script async defer src="js/bootstrap.min.js"></script>
-        <script src="js/typeahead.min.js"></script>
-        <script src="doctum.js"></script>
+        <script async defer src="js/autocomplete.min.js"></script>
         <meta name="MobileOptimized" content="width">
         <meta name="HandheldFriendly" content="true">
         <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+
     </head>
 
-    <body id="namespaces" data-name="" data-root-path="">
+    <body id="namespaces" data-name="" data-root-path="" data-search-index-url="doctum-search.json">
             <div id="content">
         <div id="left-column">
                 <div id="control-panel">
-                <form id="search-form" action="search.html">
+                <div class="search-bar hidden" id="search-progress-bar-container">
+            <div class="progress">
+                <div class="progress-bar" role="progressbar" id="search-progress-bar"
+                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: 0%"></div>
+            </div>
+        </div>
+        <form id="search-form" action="search.html">
             <span class="icon icon-search"></span>
             <input name="search"
+                   id="doctum-search-auto-complete"
                    class="typeahead form-control"
                    type="search"
-                   placeholder="Search">
+                   placeholder="Search"
+                   spellcheck="false"
+                   autocorrect="off"
+                   autocomplete="off"
+                   autocapitalize="off">
+            <div class="auto-complete-results" id="auto-complete-results"></div>
         </form>
     </div>
 
@@ -59,8 +72,7 @@
         </div>
     </nav>
 
-                        <div id="page-content">
-                    <div class="page-header">
+                        <div id="page-content">    <div class="page-header">
         <h1>Namespaces</h1>
     </div>
 
@@ -69,9 +81,9 @@
                         <h2>Drush</h2>
                         <ul>
                                                     <li><a href="Drush.html">Drush</a></li>
+                                                            <li><a href="Drush/Attributes.html">Drush\Attributes</a></li>
                                                             <li><a href="Drush/Backend.html">Drush\Backend</a></li>
                                                             <li><a href="Drush/Boot.html">Drush\Boot</a></li>
-                                                            <li><a href="Drush/Cache.html">Drush\Cache</a></li>
                                                             <li><a href="Drush/Command.html">Drush\Command</a></li>
                                                             <li><a href="Drush/Commands.html">Drush\Commands</a></li>
                                                             <li><a href="Drush/Commands/config.html">Drush\Commands\config</a></li>
@@ -80,7 +92,6 @@
                                                             <li><a href="Drush/Commands/generate/Generators.html">Drush\Commands\generate\Generators</a></li>
                                                             <li><a href="Drush/Commands/generate/Generators/Drush.html">Drush\Commands\generate\Generators\Drush</a></li>
                                                             <li><a href="Drush/Commands/generate/Generators/Migrate.html">Drush\Commands\generate\Generators\Migrate</a></li>
-                                                            <li><a href="Drush/Commands/generate/Helper.html">Drush\Commands\generate\Helper</a></li>
                                                             <li><a href="Drush/Commands/help.html">Drush\Commands\help</a></li>
                                                             <li><a href="Drush/Commands/pm.html">Drush\Commands\pm</a></li>
                                                             <li><a href="Drush/Commands/sql.html">Drush\Commands\sql</a></li>
@@ -90,17 +101,13 @@
                                                             <li><a href="Drush/Drupal/Commands.html">Drush\Drupal\Commands</a></li>
                                                             <li><a href="Drush/Drupal/Commands/config.html">Drush\Drupal\Commands\config</a></li>
                                                             <li><a href="Drush/Drupal/Commands/core.html">Drush\Drupal\Commands\core</a></li>
+                                                            <li><a href="Drush/Drupal/Commands/field.html">Drush\Drupal\Commands\field</a></li>
                                                             <li><a href="Drush/Drupal/Commands/pm.html">Drush\Drupal\Commands\pm</a></li>
                                                             <li><a href="Drush/Drupal/Commands/sql.html">Drush\Drupal\Commands\sql</a></li>
                                                             <li><a href="Drush/Drupal/Migrate.html">Drush\Drupal\Migrate</a></li>
                                                             <li><a href="Drush/Exceptions.html">Drush\Exceptions</a></li>
                                                             <li><a href="Drush/Exec.html">Drush\Exec</a></li>
                                                             <li><a href="Drush/Formatters.html">Drush\Formatters</a></li>
-                                                            <li><a href="Drush/Internal.html">Drush\Internal</a></li>
-                                                            <li><a href="Drush/Internal/Config.html">Drush\Internal\Config</a></li>
-                                                            <li><a href="Drush/Internal/Config/Yaml.html">Drush\Internal\Config\Yaml</a></li>
-                                                            <li><a href="Drush/Internal/Config/Yaml/Exception.html">Drush\Internal\Config\Yaml\Exception</a></li>
-                                                            <li><a href="Drush/Internal/Config/Yaml/Tag.html">Drush\Internal\Config\Yaml\Tag</a></li>
                                                             <li><a href="Drush/Log.html">Drush\Log</a></li>
                                                             <li><a href="Drush/Preflight.html">Drush\Preflight</a></li>
                                                             <li><a href="Drush/Psysh.html">Drush\Psysh</a></li>
@@ -108,7 +115,6 @@
                                                             <li><a href="Drush/SiteAlias.html">Drush\SiteAlias</a></li>
                                                             <li><a href="Drush/SiteAlias/Util.html">Drush\SiteAlias\Util</a></li>
                                                             <li><a href="Drush/Sql.html">Drush\Sql</a></li>
-                                                            <li><a href="Drush/Style.html">Drush\Style</a></li>
                                                             <li><a href="Drush/Symfony.html">Drush\Symfony</a></li>
                                                             <li><a href="Drush/TestTraits.html">Drush\TestTraits</a></li>
                                                             <li><a href="Drush/Utils.html">Drush\Utils</a></li>
@@ -116,7 +122,7 @@
             </div>
         </div>
     
-            </div><div id="footer">
+</div><div id="footer">
         Generated by <a href="https://github.com/code-lts/doctum">Doctum, a API Documentation generator and fork of Sami</a>.</div></div>
     </div>
     </body>
